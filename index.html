@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Northbridge Capital Partners — Independent Wealth Advisory</title>
-<meta name="description" content="Northbridge Capital Partners is an independent, fee-only wealth advisory firm helping individuals and families plan, invest, and protect what they've built.">
+<meta name="description" content="Northbridge Capital Partners is an independent, fee-only wealth advisory firm working across Indian and US markets, combining traditional planning with a growing focus on data-driven, algorithmic trading.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2312182B%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 fill=%22%23BE9B5E%22 font-family=%22Georgia,serif%22 text-anchor=%22middle%22>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,10 @@
     --brass-light:#D8BD8C;
     --line:#E4E1D8;
     --radius:2px;
+    --shadow: 0 24px 48px -24px rgba(18,24,43,0.28);
   }
+
+  section[id]{scroll-margin-top:90px;}
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -62,9 +65,9 @@
     cursor:pointer;
   }
   .btn-primary{background:var(--ink);color:var(--paper);}
-  .btn-primary:hover{background:var(--brass);color:var(--ink);}
+  .btn-primary:hover{background:var(--brass);color:var(--ink);transform:translateY(-2px);}
   .btn-ghost{border-color:var(--ink);color:var(--ink);}
-  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
   .btn-ghost-light{border-color:rgba(250,250,248,0.4);color:var(--paper);}
   .btn-ghost-light:hover{background:var(--paper);color:var(--ink);}
 
@@ -95,6 +98,11 @@
     position:relative;
     overflow:hidden;
   }
+  .hero::before{
+    content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;
+    background:radial-gradient(circle, rgba(176,141,87,0.14) 0%, rgba(176,141,87,0) 70%);
+    pointer-events:none;z-index:1;
+  }
   .hero .wrap{position:relative;z-index:2;}
   .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;}
   .hero h1{font-size:clamp(38px,4.6vw,60px);line-height:1.08;margin:22px 0 26px;}
@@ -104,7 +112,7 @@
   .chart-wrap{position:relative;}
   .chart-card{
     background:var(--ink);border-radius:var(--radius);padding:34px 30px 28px;
-    color:var(--paper);
+    color:var(--paper);box-shadow:var(--shadow);
   }
   .chart-card .cc-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
   .chart-card .cc-label{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,248,0.55);}
@@ -125,7 +133,7 @@
 
   /* ---------- TRUST STRIP ---------- */
   .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);}
-  .trust .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:34px 32px;}
+  .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:34px 32px;}
   .trust-item{text-align:center;border-left:1px solid var(--line);}
   .trust-item:first-child{border-left:none;}
   .trust-num{font-family:'Newsreader';font-size:30px;color:var(--ink);}
@@ -139,8 +147,8 @@
 
   /* ---------- SERVICES ---------- */
   .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-  .service-card{background:var(--paper);padding:44px 36px;transition:background .3s ease;}
-  .service-card:hover{background:var(--paper-2);}
+  .service-card{background:var(--paper);padding:44px 36px;transition:background .3s ease, transform .3s ease, box-shadow .3s ease;}
+  .service-card:hover{background:var(--paper-2);transform:translateY(-4px);box-shadow:var(--shadow);}
   .service-icon{width:40px;height:40px;margin-bottom:26px;}
   .service-card h3{font-size:21px;margin-bottom:12px;}
   .service-card p{color:var(--slate);font-size:15px;margin:0 0 20px;}
@@ -158,14 +166,42 @@
   .step p{color:rgba(250,250,248,0.6);font-size:14.5px;margin:0;}
   .step{border-top:1px solid rgba(250,250,248,0.18);padding-top:22px;}
 
+  /* ---------- QUANT / ALGO ---------- */
+  .quant{background:var(--paper-2);}
+  .quant-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .quant-copy .sec-head{margin-bottom:34px;}
+  .quant-points{display:flex;flex-direction:column;gap:22px;margin-bottom:36px;}
+  .quant-point{display:flex;gap:16px;}
+  .quant-point .dot{width:7px;height:7px;border-radius:50%;background:var(--brass);flex:none;margin-top:8px;}
+  .quant-point h4{font-family:'Newsreader';font-size:17px;margin:0 0 4px;}
+  .quant-point p{color:var(--slate);font-size:14.5px;margin:0;}
+  .terminal{
+    background:var(--ink);border-radius:var(--radius);color:var(--paper);
+    padding:0;overflow:hidden;box-shadow:var(--shadow);
+  }
+  .terminal-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid rgba(250,250,248,0.12);}
+  .terminal-bar span{width:9px;height:9px;border-radius:50%;background:rgba(250,250,248,0.2);}
+  .terminal-bar .t-label{margin-left:8px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,250,248,0.45);}
+  .terminal-body{padding:26px 24px 30px;}
+  .t-row{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(250,250,248,0.1);font-family:'IBM Plex Mono';font-size:13px;}
+  .t-row:last-of-type{border-bottom:none;}
+  .t-row .t-k{color:rgba(250,250,248,0.55);}
+  .t-row .t-v{color:var(--brass-light);font-size:14px;}
+  .t-row .t-v.up::before{content:"▲ ";font-size:10px;}
+  .t-foot{font-family:'IBM Plex Mono';font-size:11px;color:rgba(250,250,248,0.4);margin-top:18px;padding-top:16px;border-top:1px dashed rgba(250,250,248,0.15);line-height:1.6;}
+
   /* ---------- ABOUT ---------- */
   .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:70px;align-items:center;}
   .about-visual{
-    aspect-ratio:4/5;background:var(--paper-2);border:1px solid var(--line);
+    aspect-ratio:4/5;background:var(--ink);border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+    box-shadow:var(--shadow);
   }
-  .about-visual .mono{font-family:'Newsreader';font-size:120px;color:var(--line);}
   .about-visual::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--brass);}
+  .about-stats{display:flex;flex-direction:column;gap:36px;padding:40px;}
+  .about-stat{display:flex;flex-direction:column;gap:6px;border-left:2px solid var(--brass);padding-left:18px;}
+  .about-stat .n{font-family:'Newsreader';font-size:44px;color:var(--paper);line-height:1;}
+  .about-stat .l{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,250,248,0.55);}
   .about h2{font-size:clamp(26px,3vw,34px);margin-bottom:20px;}
   .about p{color:var(--slate);margin-bottom:16px;}
   .about-sign{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);}
@@ -200,6 +236,24 @@
   .field textarea{resize:vertical;min-height:110px;}
   form .btn{align-self:flex-start;margin-top:6px;}
   .form-note{font-size:12.5px;color:var(--slate);margin-top:4px;}
+  .form-note.success{color:var(--brass);}
+
+  /* ---------- MODAL ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(18,24,43,0.55);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;z-index:200;opacity:0;pointer-events:none;transition:opacity .25s ease;
+  }
+  .modal-overlay.open{opacity:1;pointer-events:auto;}
+  .modal-box{
+    background:var(--paper);max-width:560px;width:100%;max-height:80vh;overflow-y:auto;
+    padding:38px 34px;border-radius:var(--radius);box-shadow:var(--shadow);
+    transform:translateY(12px);transition:transform .25s ease;
+  }
+  .modal-overlay.open .modal-box{transform:translateY(0);}
+  .modal-box h3{font-size:22px;margin-bottom:16px;}
+  .modal-box p{color:var(--slate);font-size:14.5px;margin-bottom:12px;}
+  .modal-close{float:right;background:none;border:0;font-size:20px;cursor:pointer;color:var(--slate);line-height:1;}
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--ink);color:rgba(250,250,248,0.7);padding:64px 0 32px;}
@@ -231,22 +285,24 @@
     .services-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr 1fr;}
     .about-grid{grid-template-columns:1fr;}
+    .quant-grid{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:1fr;}
     section{padding:80px 0;}
     .foot-links{gap:36px;}
   }
 </style>
 </head>
-<body>
+<body id="top">
 
 <header>
   <nav class="wrap">
-    <a href="#" class="logo">
+    <a href="#top" class="logo">
       <span class="logo-mark"><span>N</span></span>
       <span class="logo-word">Northbridge <b>Capital</b></span>
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
+      <li><a href="#quant">Algo Trading</a></li>
       <li><a href="#approach">Approach</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -264,9 +320,9 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Independent &amp; fee-only advisory</p>
+        <p class="eyebrow">Independent &amp; fee-only advisory · India &amp; US markets</p>
         <h1>Growing your capital,<br>guarded just as <em>carefully</em>.</h1>
-        <p class="lede">Northbridge Capital Partners builds concentrated, tax-aware investment plans for individuals, families, and business owners — with one advisor accountable for the whole picture.</p>
+        <p class="lede">Northbridge Capital Partners builds concentrated, tax-aware investment plans for individuals, families, and business owners — across Indian and US markets, with one advisor accountable for the whole picture.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">Book a consultation</a>
           <a href="#services" class="btn btn-ghost">See our services</a>
@@ -275,13 +331,13 @@
       <div class="chart-wrap reveal">
         <div class="chart-card">
           <div class="cc-top">
-            <span class="cc-label">Portfolio index · 10yr</span>
+            <span class="cc-label">5-Year Track Record</span>
             <span class="cc-label">Illustrative</span>
           </div>
-          <span class="cc-value">+164.2%</span>
+          <span class="cc-value">28% CAGR</span>
           <svg viewBox="0 0 400 160" preserveAspectRatio="none">
-            <polyline class="cc-fill" points="0,150 40,138 80,142 120,118 160,124 200,96 240,102 280,74 320,58 360,40 400,22 400,160 0,160" fill="url(#g)" opacity="0.18"/>
-            <path class="cc-path" d="M0,150 L40,138 L80,142 L120,118 L160,124 L200,96 L240,102 L280,74 L320,58 L360,40 L400,22"/>
+            <polyline class="cc-fill" points="0,150 100,120 200,96 300,60 400,26 400,160 0,160" fill="url(#g)" opacity="0.18"/>
+            <path class="cc-path" d="M0,150 L100,120 L200,96 L300,60 L400,26"/>
             <defs>
               <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#D8BD8C"/>
@@ -298,16 +354,20 @@
   <div class="trust">
     <div class="wrap">
       <div class="trust-item">
-        <div class="trust-num">$420M+</div>
-        <div class="trust-label">Assets advised</div>
+        <div class="trust-num">₹12 Cr+</div>
+        <div class="trust-label">Under management</div>
       </div>
       <div class="trust-item">
-        <div class="trust-num">1:1</div>
-        <div class="trust-label">Fiduciary, always</div>
+        <div class="trust-num">28%</div>
+        <div class="trust-label">5-yr CAGR</div>
       </div>
       <div class="trust-item">
-        <div class="trust-num">18 yrs</div>
-        <div class="trust-label">Combined experience</div>
+        <div class="trust-num">India + US</div>
+        <div class="trust-label">Markets we trade</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">6</div>
+        <div class="trust-label">People on the team</div>
       </div>
     </div>
   </div>
@@ -325,19 +385,72 @@
           <svg class="service-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#B08D57" stroke-width="1.2"/><path d="M12 24l6-8 5 5 7-10" stroke="#12182B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>Wealth Management</h3>
           <p>Portfolio construction built around your time horizon, risk appetite, and tax situation — reviewed quarterly, adjusted deliberately.</p>
-          <a href="#contact" class="learn">Learn more →</a>
+          <a href="#" class="learn" data-modal="wealth">Learn more →</a>
         </div>
         <div class="service-card">
           <svg class="service-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#B08D57" stroke-width="1.2"/><path d="M20 10v10l7 4" stroke="#12182B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>Retirement Planning</h3>
           <p>Income modeling that answers the real question — can you retire when you want to, at the lifestyle you expect.</p>
-          <a href="#contact" class="learn">Learn more →</a>
+          <a href="#" class="learn" data-modal="retirement">Learn more →</a>
         </div>
         <div class="service-card">
           <svg class="service-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#B08D57" stroke-width="1.2"/><path d="M14 26V16h5a3 3 0 010 6h-5m0 0h6a3 3 0 010 6h-6" stroke="#12182B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>Tax &amp; Estate Strategy</h3>
           <p>Coordinated planning with your CA and estate counsel so growth isn't quietly given back at filing time.</p>
-          <a href="#contact" class="learn">Learn more →</a>
+          <a href="#" class="learn" data-modal="tax">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUANT / ALGO TRADING -->
+  <section id="quant" class="quant">
+    <div class="wrap quant-grid">
+      <div class="quant-copy reveal">
+        <div class="sec-head" style="margin-bottom:34px;">
+          <p class="eyebrow">A growing focus</p>
+          <h2>Systematic, data-driven trading — alongside human judgment.</h2>
+          <p>We're increasingly building out our own quantitative infrastructure: backtested, rules-based strategies that remove emotion from execution, running on a steadily growing base of historical and live market data.</p>
+        </div>
+        <div class="quant-points">
+          <div class="quant-point">
+            <span class="dot"></span>
+            <div>
+              <h4>Backtested before it's live</h4>
+              <p>Every strategy is tested against years of historical tick data before a single rupee is put behind it.</p>
+            </div>
+          </div>
+          <div class="quant-point">
+            <span class="dot"></span>
+            <div>
+              <h4>Growing data infrastructure</h4>
+              <p>We're continuously expanding the market data we capture and log, so strategies are refined on more evidence over time — not gut feel.</p>
+            </div>
+          </div>
+          <div class="quant-point">
+            <span class="dot"></span>
+            <div>
+              <h4>Risk controls built in, not bolted on</h4>
+              <p>Position sizing, stop-loss logic, and drawdown limits are part of the system design, monitored continuously rather than checked at day's end.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-ghost">Ask us about our quant approach</a>
+      </div>
+
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <span></span><span></span><span></span>
+          <span class="t-label">Strategy Monitor · Illustrative</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-row"><span class="t-k">Strategies in backtest</span><span class="t-v">4 active</span></div>
+          <div class="t-row"><span class="t-k">Historical data coverage</span><span class="t-v up">5+ years</span></div>
+          <div class="t-row"><span class="t-k">Markets covered</span><span class="t-v">India + US</span></div>
+          <div class="t-row"><span class="t-k">Market data logged / session</span><span class="t-v up">Growing daily</span></div>
+          <div class="t-row"><span class="t-k">Execution monitoring</span><span class="t-v">Real-time</span></div>
+          <div class="t-row"><span class="t-k">Risk limits</span><span class="t-v">Enforced per-trade</span></div>
+          <div class="t-foot">Figures are illustrative of our process, not live performance data or a return guarantee. Algorithmic strategies carry their own risks, including model risk and execution risk — ask us for the full disclosure.</div>
         </div>
       </div>
     </div>
@@ -380,12 +493,17 @@
   <section id="about">
     <div class="wrap about-grid">
       <div class="about-visual reveal">
-        <span class="mono">N</span>
+        <div class="about-stats">
+          <div class="about-stat"><span class="n">5</span><span class="l">Years running</span></div>
+          <div class="about-stat"><span class="n">6</span><span class="l">People on the team</span></div>
+          <div class="about-stat"><span class="n">2</span><span class="l">Markets: India &amp; US</span></div>
+        </div>
       </div>
       <div class="about reveal">
         <p class="eyebrow">About the firm</p>
-        <h2>Built to be your only advisor, not one of several.</h2>
-        <p>Northbridge Capital Partners was founded on a simple frustration: most advisory relationships are transactional, product-driven, and short on follow-through. We work with a deliberately small number of households at a time, so every plan gets the attention it needs.</p>
+        <h2>A small team, five years in, building for the long run.</h2>
+        <p>Northbridge Capital Partners was founded on a simple frustration: most advisory relationships are transactional, product-driven, and short on follow-through. Five years on, we're still a small team by choice — six people, working closely across Indian and US markets — because it lets every plan get real attention.</p>
+        <p>We're a small business with big ambitions. The plan has always been to grow — but only in a way that doesn't cost us the thing that got us here: knowing every client's plan by name, not by account number.</p>
         <p>We are fee-only and fiduciary by structure — meaning we're never paid a commission to recommend a product, and we're legally bound to act in your interest first.</p>
         <div class="about-sign">
           <p class="name">Placeholder Name</p>
@@ -414,7 +532,7 @@
         <div class="info-row"><span class="k">Phone</span><span>+91 00000 00000</span></div>
         <div class="info-row"><span class="k">Office</span><span>Placeholder Address, Mumbai, India</span></div>
       </div>
-      <form onsubmit="event.preventDefault(); alert('Replace this form action with Formspree/Getform before going live.');">
+      <form id="contact-form">
         <div class="field">
           <label for="name">Full name</label>
           <input id="name" type="text" placeholder="Your name" required>
@@ -428,7 +546,7 @@
           <textarea id="message" placeholder="A brief note on your situation..."></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Send message</button>
-        <p class="form-note">This form is a static placeholder — see the setup notes for connecting it to a real inbox.</p>
+        <p class="form-note" id="form-status">Clicking send opens your email client with this pre-filled. For a real inbox form instead, connect Formspree or Getform — see the setup notes.</p>
       </form>
     </div>
   </section>
@@ -438,7 +556,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <a href="#" class="logo">
+      <a href="#top" class="logo">
         <span class="logo-mark"><span>N</span></span>
         <span class="logo-word">Northbridge <b>Capital</b></span>
       </a>
@@ -461,14 +579,14 @@
         <div class="foot-col">
           <h4>Legal</h4>
           <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Disclosures</a></li>
+            <li><a href="#" data-modal="privacy">Privacy Policy</a></li>
+            <li><a href="#" data-modal="disclosures">Disclosures</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <p>Placeholder name and content — replace before publishing. Northbridge Capital Partners does not currently hold any regulatory registration; this template is not investment advice. Consult a licensed advisor and update all disclosures before this site represents a real, operating financial services business.</p>
+      <p>Placeholder name and content — replace before publishing. Northbridge Capital Partners does not currently hold any regulatory registration; this template is not investment advice. Algorithmic and systematic trading strategies involve model risk, execution risk, and the possibility of loss, and past or backtested performance does not guarantee future results. Consult a licensed advisor and update all disclosures before this site represents a real, operating financial services business.</p>
       <span class="foot-small">© 2026 Northbridge Capital</span>
     </div>
   </div>
@@ -482,13 +600,109 @@
   },{threshold:0.15});
   els.forEach(el=>io.observe(el));
 
-  // mobile menu (simple toggle placeholder — expand nav-links)
+  // mobile menu
   const burger = document.querySelector('.burger');
   const navLinks = document.querySelector('.nav-links');
+  function closeMenu(){
+    navLinks.style.cssText = '';
+  }
   burger.addEventListener('click', ()=>{
     const open = navLinks.style.display === 'flex';
-    navLinks.style.display = open ? 'none' : 'flex';
-    navLinks.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:78px;left:0;right:0;background:#FAFAF8;padding:24px 32px;gap:20px;border-bottom:1px solid #E4E1D8;';
+    if(open){ closeMenu(); }
+    else {
+      navLinks.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:78px;left:0;right:0;background:#FAFAF8;padding:24px 32px;gap:20px;border-bottom:1px solid #E4E1D8;z-index:60;';
+    }
+  });
+  // close mobile menu after picking a link, so every tap visibly goes somewhere
+  navLinks.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', closeMenu);
+  });
+
+  // ---------- MODALS (Privacy / Disclosures) ----------
+  const modalContent = {
+    wealth: {
+      title: 'Wealth Management',
+      body: `<p>Portfolio construction built around your actual time horizon, risk appetite, and tax situation — not a generic model portfolio.</p>
+             <p>Includes quarterly reviews, rebalancing, and direct implementation with your custodian on your behalf.</p>
+             <p><a href="#contact" class="btn btn-primary" style="margin-top:8px;" onclick="closeModal()">Book a consultation →</a></p>`
+    },
+    retirement: {
+      title: 'Retirement Planning',
+      body: `<p>Income modeling that answers the real question: can you retire when you want to, at the lifestyle you expect?</p>
+             <p>We model withdrawal sequencing, inflation, healthcare costs, and Social Security / pension timing where relevant, across both Indian and US accounts.</p>
+             <p><a href="#contact" class="btn btn-primary" style="margin-top:8px;" onclick="closeModal()">Book a consultation →</a></p>`
+    },
+    tax: {
+      title: 'Tax & Estate Strategy',
+      body: `<p>Coordinated planning with your CA and estate counsel, so growth isn't quietly given back at filing time.</p>
+             <p>Covers tax-loss harvesting, account location strategy, and estate documents like wills and nominations kept current as your plan grows.</p>
+             <p><a href="#contact" class="btn btn-primary" style="margin-top:8px;" onclick="closeModal()">Book a consultation →</a></p>`
+    },
+    privacy: {
+      title: 'Privacy Policy',
+      body: `<p>Placeholder policy — replace with your actual privacy practices before publishing.</p>
+             <p>Explain what personal and financial information you collect (name, email, phone, portfolio details), how it's stored, who it's shared with, and how someone can request it be deleted.</p>
+             <p>If you're SEBI-registered or handling client funds/data in India, this needs to reflect your actual data-handling and KYC obligations, not just boilerplate.</p>`
+    },
+    disclosures: {
+      title: 'Disclosures',
+      body: `<p>Placeholder disclosure — replace with your firm's real regulatory status before publishing.</p>
+             <p>State clearly whether the firm is currently a registered investment advisor / broker in India and/or the US, what licenses are held, and the actual risks of the strategies offered — including algorithmic and systematic trading, which carries model risk, execution risk, and the possibility of loss.</p>
+             <p>Past or backtested performance (including the 28% figure referenced on this site) does not guarantee future results.</p>`
+    }
+  };
+  let overlay;
+  function ensureOverlay(){
+    if(overlay) return overlay;
+    overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.innerHTML = `<div class="modal-box" role="dialog" aria-modal="true">
+      <button class="modal-close" aria-label="Close">×</button>
+      <h3></h3>
+      <div class="modal-body"></div>
+    </div>`;
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
+    overlay.querySelector('.modal-close').addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+    return overlay;
+  }
+  function openModal(key){
+    const data = modalContent[key];
+    if(!data) return;
+    const ov = ensureOverlay();
+    ov.querySelector('h3').textContent = data.title;
+    ov.querySelector('.modal-body').innerHTML = data.body;
+    ov.classList.add('open');
+  }
+  function closeModal(){ if(overlay) overlay.classList.remove('open'); }
+  document.querySelectorAll('[data-modal]').forEach(link=>{
+    link.addEventListener('click', (e)=>{
+      e.preventDefault();
+      openModal(link.getAttribute('data-modal'));
+    });
+  });
+
+  // ---------- CONTACT FORM ----------
+  // Static hosting (GitHub Pages) can't run a backend, so this opens a
+  // pre-filled email to your inbox. Swap this for a Formspree/Getform
+  // endpoint once you have one — see the README.
+  const form = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const subject = encodeURIComponent('Consultation request from ' + (name || 'website visitor'));
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    const mailto = `mailto:hello@northbridgecapital.example?subject=${subject}&body=${body}`;
+
+    // visible confirmation on the page itself, since opening a mail app is invisible feedback
+    formStatus.textContent = 'Opening your email app now — if nothing happens, email us directly at hello@northbridgecapital.example.';
+    formStatus.classList.add('success');
+
+    window.location.href = mailto;
   });
 </script>
 
