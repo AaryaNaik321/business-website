@@ -1,4 +1,4 @@
-# Northbridge Capital — Site Setup Notes
+# N Capital — Site Setup Notes
 
 Everything below is placeholder content (name, logo initial, address, phone, email,
 testimonial, founder name). Search-and-replace "Northbridge Capital" / "Northbridge
