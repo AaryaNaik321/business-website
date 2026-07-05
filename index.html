@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northbridge Capital Partners — Independent Wealth Advisory</title>
+<meta name="description" content="Northbridge Capital Partners is an independent, fee-only wealth advisory firm helping individuals and families plan, invest, and protect what they've built.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2312182B%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 fill=%22%23BE9B5E%22 font-family=%22Georgia,serif%22 text-anchor=%22middle%22>N</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12182B;        /* deep navy - primary */
+    --ink-2:#1D2540;      /* lighter navy for panels */
+    --paper:#FAFAF8;      /* page background */
+    --paper-2:#F1EFE9;    /* warm off-white panel */
+    --slate:#5B6270;      /* secondary text */
+    --brass:#B08D57;      /* accent */
+    --brass-light:#D8BD8C;
+    --line:#E4E1D8;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Newsreader',Georgia,serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--brass);display:inline-block;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;
+    font-family:'Inter';font-weight:500;font-size:14.5px;
+    text-decoration:none;border-radius:var(--radius);
+    border:1px solid transparent;
+    transition:all .25s ease;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--brass);color:var(--ink);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn-ghost-light{border-color:rgba(250,250,248,0.4);color:var(--paper);}
+  .btn-ghost-light:hover{background:var(--paper);color:var(--ink);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(250,250,248,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:78px;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo-mark{width:34px;height:34px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;flex:none;}
+  .logo-mark span{font-family:'Newsreader',serif;color:var(--brass-light);font-size:18px;}
+  .logo-word{font-family:'Newsreader',serif;font-size:17px;color:var(--ink);letter-spacing:0.01em;}
+  .logo-word b{font-weight:600;}
+  .nav-links{display:flex;gap:36px;list-style:none;margin:0;padding:0;}
+  .nav-links a{text-decoration:none;font-size:14.5px;color:var(--ink);position:relative;}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--brass);transition:width .25s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:28px;}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+  .burger span{display:block;width:22px;height:1.5px;background:var(--ink);margin:5px 0;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:190px 0 120px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;}
+  .hero h1{font-size:clamp(38px,4.6vw,60px);line-height:1.08;margin:22px 0 26px;}
+  .hero h1 em{font-style:italic;color:var(--brass);}
+  .hero p.lede{font-size:18px;color:var(--slate);max-width:480px;margin-bottom:38px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .chart-wrap{position:relative;}
+  .chart-card{
+    background:var(--ink);border-radius:var(--radius);padding:34px 30px 28px;
+    color:var(--paper);
+  }
+  .chart-card .cc-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+  .chart-card .cc-label{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,248,0.55);}
+  .chart-card .cc-value{font-family:'Newsreader';font-size:32px;color:var(--brass-light);}
+  .chart-card svg{width:100%;height:auto;display:block;margin-top:14px;}
+  .chart-card .cc-path{
+    fill:none;stroke:var(--brass-light);stroke-width:2;
+    stroke-dasharray:600;stroke-dashoffset:600;
+    animation:draw 1.8s ease forwards .3s;
+  }
+  .chart-card .cc-fill{opacity:0;animation:fadein 1s ease forwards 1.4s;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @keyframes fadein{to{opacity:1;}}
+  @media (prefers-reduced-motion: reduce){
+    .chart-card .cc-path{animation:none;stroke-dashoffset:0;}
+    .chart-card .cc-fill{animation:none;opacity:1;}
+  }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);}
+  .trust .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:34px 32px;}
+  .trust-item{text-align:center;border-left:1px solid var(--line);}
+  .trust-item:first-child{border-left:none;}
+  .trust-num{font-family:'Newsreader';font-size:30px;color:var(--ink);}
+  .trust-label{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-top:6px;}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:120px 0;}
+  .sec-head{max-width:620px;margin-bottom:64px;}
+  .sec-head h2{font-size:clamp(28px,3.4vw,40px);margin-top:16px;}
+  .sec-head p{color:var(--slate);margin-top:16px;font-size:16.5px;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .service-card{background:var(--paper);padding:44px 36px;transition:background .3s ease;}
+  .service-card:hover{background:var(--paper-2);}
+  .service-icon{width:40px;height:40px;margin-bottom:26px;}
+  .service-card h3{font-size:21px;margin-bottom:12px;}
+  .service-card p{color:var(--slate);font-size:15px;margin:0 0 20px;}
+  .service-card .learn{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--brass);text-decoration:none;}
+
+  /* ---------- APPROACH ---------- */
+  .approach{background:var(--ink);color:var(--paper);}
+  .approach .sec-head h2, .approach .eyebrow{color:var(--paper);}
+  .approach .eyebrow{color:var(--brass-light);}
+  .approach .eyebrow::before{background:var(--brass-light);}
+  .approach .sec-head p{color:rgba(250,250,248,0.6);}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;}
+  .step .step-num{font-family:'IBM Plex Mono';font-size:13px;color:var(--brass-light);}
+  .step h3{font-family:'Newsreader';font-size:20px;color:var(--paper);margin:16px 0 10px;}
+  .step p{color:rgba(250,250,248,0.6);font-size:14.5px;margin:0;}
+  .step{border-top:1px solid rgba(250,250,248,0.18);padding-top:22px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:70px;align-items:center;}
+  .about-visual{
+    aspect-ratio:4/5;background:var(--paper-2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+  }
+  .about-visual .mono{font-family:'Newsreader';font-size:120px;color:var(--line);}
+  .about-visual::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--brass);}
+  .about h2{font-size:clamp(26px,3vw,34px);margin-bottom:20px;}
+  .about p{color:var(--slate);margin-bottom:16px;}
+  .about-sign{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);}
+  .about-sign .name{font-family:'Newsreader';font-size:18px;font-style:italic;}
+  .about-sign .role{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-top:4px;}
+
+  /* ---------- QUOTE ---------- */
+  .quote{background:var(--paper-2);}
+  .quote blockquote{
+    font-family:'Newsreader';font-style:italic;
+    font-size:clamp(24px,3.4vw,36px);
+    line-height:1.4;max-width:820px;margin:0 auto;text-align:center;color:var(--ink);
+  }
+  .quote cite{display:block;font-style:normal;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-top:28px;text-align:center;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+  .contact-info h2{font-size:clamp(28px,3.4vw,38px);margin:16px 0 20px;}
+  .contact-info p{color:var(--slate);margin-bottom:30px;max-width:420px;}
+  .info-row{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line);font-size:14.5px;}
+  .info-row:last-child{border-bottom:1px solid var(--line);}
+  .info-row .k{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);width:110px;flex:none;}
+  form{display:flex;flex-direction:column;gap:18px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field label{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);}
+  .field input, .field textarea{
+    border:1px solid var(--line);background:var(--paper);
+    padding:13px 14px;font-family:'Inter';font-size:15px;color:var(--ink);
+    border-radius:var(--radius);
+  }
+  .field input:focus, .field textarea:focus{outline:2px solid var(--brass);outline-offset:1px;border-color:var(--brass);}
+  .field textarea{resize:vertical;min-height:110px;}
+  form .btn{align-self:flex-start;margin-top:6px;}
+  .form-note{font-size:12.5px;color:var(--slate);margin-top:4px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:rgba(250,250,248,0.7);padding:64px 0 32px;}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;padding-bottom:44px;border-bottom:1px solid rgba(250,250,248,0.15);}
+  .foot-top .logo-word{color:var(--paper);}
+  .foot-links{display:flex;gap:60px;flex-wrap:wrap;}
+  .foot-col h4{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,250,248,0.5);margin:0 0 16px;}
+  .foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .foot-col a{text-decoration:none;font-size:14px;color:rgba(250,250,248,0.85);}
+  .foot-col a:hover{color:var(--brass-light);}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;flex-wrap:wrap;gap:14px;}
+  .foot-bottom p{font-size:12.5px;color:rgba(250,250,248,0.45);margin:0;max-width:640px;line-height:1.7;}
+  .foot-small{font-family:'IBM Plex Mono';font-size:11px;color:rgba(250,250,248,0.4);}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .hero{padding:150px 0 80px;}
+    .hero-grid{grid-template-columns:1fr;gap:50px;}
+    .trust .wrap{grid-template-columns:1fr;padding:24px 32px;}
+    .trust-item{border-left:none;border-top:1px solid var(--line);padding-top:18px;}
+    .trust-item:first-child{border-top:none;padding-top:0;}
+    .services-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    section{padding:80px 0;}
+    .foot-links{gap:36px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="logo">
+      <span class="logo-mark"><span>N</span></span>
+      <span class="logo-word">Northbridge <b>Capital</b></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Book a consultation</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Independent &amp; fee-only advisory</p>
+        <h1>Growing your capital,<br>guarded just as <em>carefully</em>.</h1>
+        <p class="lede">Northbridge Capital Partners builds concentrated, tax-aware investment plans for individuals, families, and business owners — with one advisor accountable for the whole picture.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Book a consultation</a>
+          <a href="#services" class="btn btn-ghost">See our services</a>
+        </div>
+      </div>
+      <div class="chart-wrap reveal">
+        <div class="chart-card">
+          <div class="cc-top">
+            <span class="cc-label">Portfolio index · 10yr</span>
+            <span class="cc-label">Illustrative</span>
+          </div>
+          <span class="cc-value">+164.2%</span>
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+            <polyline class="cc-fill" points="0,150 40,138 80,142 120,118 160,124 200,96 240,102 280,74 320,58 360,40 400,22 400,160 0,160" fill="url(#g)" opacity="0.18"/>
+            <path class="cc-path" d="M0,150 L40,138 L80,142 L120,118 L160,124 L200,96 L240,102 L280,74 L320,58 L360,40 L400,22"/>
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#D8BD8C"/>
+                <stop offset="100%" stop-color="#D8BD8C" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust">
+    <div class="wrap">
+      <div class="trust-item">
+        <div class="trust-num">$420M+</div>
+        <div class="trust-label">Assets advised</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">1:1</div>
+        <div class="trust-label">Fiduciary, always</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">18 yrs</div>
+        <div class="trust-label">Combined experience</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">What we do</p>
+        <h2>Three disciplines, one accountable plan.</h2>
+        <p>We don't hand you off between departments. The advisor you meet is the one managing your plan.</p>
+      </div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#B08D57" stroke-width="1.2"/><path d="M12 24l6-8 5 5 7-10" stroke="#12182B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Wealth Management</h3>
+          <p>Portfolio construction built around your time horizon, risk appetite, and tax situation — reviewed quarterly, adjusted deliberately.</p>
+          <a href="#contact" class="learn">Learn more →</a>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#B08D57" stroke-width="1.2"/><path d="M20 10v10l7 4" stroke="#12182B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Retirement Planning</h3>
+          <p>Income modeling that answers the real question — can you retire when you want to, at the lifestyle you expect.</p>
+          <a href="#contact" class="learn">Learn more →</a>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#B08D57" stroke-width="1.2"/><path d="M14 26V16h5a3 3 0 010 6h-5m0 0h6a3 3 0 010 6h-6" stroke="#12182B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Tax &amp; Estate Strategy</h3>
+          <p>Coordinated planning with your CA and estate counsel so growth isn't quietly given back at filing time.</p>
+          <a href="#contact" class="learn">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach" class="approach">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">How we work</p>
+        <h2>A four-step process, repeated every year.</h2>
+        <p>Plans decay the moment life changes. Ours are built to be revisited, not filed away.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Discovery</h3>
+          <p>A detailed review of your income, holdings, obligations, and goals — no product pitch, just the picture.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>Strategy</h3>
+          <p>A written plan covering allocation, tax exposure, insurance gaps, and a realistic timeline.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Execution</h3>
+          <p>We implement directly with custodians on your behalf — you approve, we handle the paperwork.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <h3>Review</h3>
+          <p>Scheduled check-ins, not just year-end scrambles, so the plan moves with your life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-visual reveal">
+        <span class="mono">N</span>
+      </div>
+      <div class="about reveal">
+        <p class="eyebrow">About the firm</p>
+        <h2>Built to be your only advisor, not one of several.</h2>
+        <p>Northbridge Capital Partners was founded on a simple frustration: most advisory relationships are transactional, product-driven, and short on follow-through. We work with a deliberately small number of households at a time, so every plan gets the attention it needs.</p>
+        <p>We are fee-only and fiduciary by structure — meaning we're never paid a commission to recommend a product, and we're legally bound to act in your interest first.</p>
+        <div class="about-sign">
+          <p class="name">Placeholder Name</p>
+          <p class="role">Founder &amp; Principal Advisor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote">
+    <div class="wrap reveal">
+      <blockquote>“For the first time, I understood exactly where my money was going — and why.”</blockquote>
+      <cite>— Placeholder Client, Business Owner</cite>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Start with a conversation, not a sales call.</h2>
+        <p>Thirty minutes, no obligation. We'll tell you honestly whether we're a fit before anything else.</p>
+        <div class="info-row"><span class="k">Email</span><span>hello@northbridgecapital.example</span></div>
+        <div class="info-row"><span class="k">Phone</span><span>+91 00000 00000</span></div>
+        <div class="info-row"><span class="k">Office</span><span>Placeholder Address, Mumbai, India</span></div>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Replace this form action with Formspree/Getform before going live.');">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="you@email.com" required>
+        </div>
+        <div class="field">
+          <label for="message">What can we help with?</label>
+          <textarea id="message" placeholder="A brief note on your situation..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p class="form-note">This form is a static placeholder — see the setup notes for connecting it to a real inbox.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="#" class="logo">
+        <span class="logo-mark"><span>N</span></span>
+        <span class="logo-word">Northbridge <b>Capital</b></span>
+      </a>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>Firm</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#contact">Book a consultation</a></li>
+            <li><a href="mailto:hello@northbridgecapital.example">hello@northbridgecapital.example</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Disclosures</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>Placeholder name and content — replace before publishing. Northbridge Capital Partners does not currently hold any regulatory registration; this template is not investment advice. Consult a licensed advisor and update all disclosures before this site represents a real, operating financial services business.</p>
+      <span class="foot-small">© 2026 Northbridge Capital</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.15});
+  els.forEach(el=>io.observe(el));
+
+  // mobile menu (simple toggle placeholder — expand nav-links)
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', ()=>{
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:78px;left:0;right:0;background:#FAFAF8;padding:24px 32px;gap:20px;border-bottom:1px solid #E4E1D8;';
+  });
+</script>
+
+</body>
+</html>
