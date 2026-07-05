@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Northbridge Capital Partners — Independent Wealth Advisory</title>
-<meta name="description" content="Northbridge Capital Partners is an independent, fee-only wealth advisory firm working across Indian and US markets, combining traditional planning with a growing focus on data-driven, algorithmic trading.">
+<title>N Capital Partners — Trading & Portfolio Management</title>
+<meta name="description" content="N Capital Partners is a trading-first firm working across Indian and US markets — building portfolios from scratch, or securing and leveraging existing ones to trade actively, alongside a growing focus on data-driven, algorithmic strategies.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2312182B%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 fill=%22%23BE9B5E%22 font-family=%22Georgia,serif%22 text-anchor=%22middle%22>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,6 +77,8 @@
     background:rgba(250,250,248,0.88);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
+    border-top:3px solid;
+    border-image:linear-gradient(90deg, #8a6d3f, #D8BD8C, #8a6d3f) 1;
   }
   nav.wrap{display:flex;align-items:center;justify-content:space-between;height:78px;}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
@@ -131,6 +133,33 @@
     .chart-card .cc-fill{animation:none;opacity:1;}
   }
 
+  .hero-grid > div:first-child > *{
+    opacity:0; transform:translateY(16px);
+    animation:hero-in .7s ease forwards;
+  }
+  .hero-grid > div:first-child > *:nth-child(1){animation-delay:.05s;}
+  .hero-grid > div:first-child > *:nth-child(2){animation-delay:.15s;}
+  .hero-grid > div:first-child > *:nth-child(3){animation-delay:.28s;}
+  .hero-grid > div:first-child > *:nth-child(4){animation-delay:.4s;}
+  @keyframes hero-in{to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion: reduce){
+    .hero-grid > div:first-child > *{opacity:1;transform:none;animation:none;}
+  }
+  .scroll-cue{
+    position:absolute;left:50%;bottom:34px;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    text-decoration:none;color:var(--slate);z-index:2;
+    opacity:0;animation:hero-in .7s ease forwards .6s;
+  }
+  .scroll-cue span{font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .scroll-cue svg{width:14px;height:14px;animation:bob 2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+  @media (prefers-reduced-motion: reduce){
+    .scroll-cue{opacity:1;animation:none;}
+    .scroll-cue svg{animation:none;}
+  }
+  @media (max-width:900px){ .scroll-cue{display:none;} }
+
   /* ---------- TRUST STRIP ---------- */
   .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);}
   .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:34px 32px;}
@@ -146,7 +175,7 @@
   .sec-head p{color:var(--slate);margin-top:16px;font-size:16.5px;}
 
   /* ---------- SERVICES ---------- */
-  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
   .service-card{background:var(--paper);padding:44px 36px;transition:background .3s ease, transform .3s ease, box-shadow .3s ease;}
   .service-card:hover{background:var(--paper-2);transform:translateY(-4px);box-shadow:var(--shadow);}
   .service-icon{width:40px;height:40px;margin-bottom:26px;}
@@ -208,6 +237,25 @@
   .about-sign .name{font-family:'Newsreader';font-size:18px;font-style:italic;}
   .about-sign .role{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-top:4px;}
 
+  /* ---------- TEAM ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;}
+  .team-card{
+    text-align:center;padding:36px 20px;background:var(--paper);
+    border:1px solid var(--line);border-radius:var(--radius);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--brass);}
+  .team-avatar{
+    width:64px;height:64px;border-radius:50%;margin:0 auto 18px;
+    background:var(--ink);color:var(--brass-light);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Newsreader';font-size:24px;
+    border:1px solid var(--brass);
+  }
+  .team-card h3{font-size:17px;margin-bottom:4px;}
+  .team-role{font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--brass);margin:0 0 12px;}
+  .team-blurb{font-size:13.5px;color:var(--slate);margin:0;line-height:1.55;}
+
   /* ---------- QUOTE ---------- */
   .quote{background:var(--paper-2);}
   .quote blockquote{
@@ -236,7 +284,6 @@
   .field textarea{resize:vertical;min-height:110px;}
   form .btn{align-self:flex-start;margin-top:6px;}
   .form-note{font-size:12.5px;color:var(--slate);margin-top:4px;}
-  .form-note.success{color:var(--brass);}
 
   /* ---------- MODAL ---------- */
   .modal-overlay{
@@ -285,6 +332,7 @@
     .services-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr 1fr;}
     .about-grid{grid-template-columns:1fr;}
+    .team-grid{grid-template-columns:repeat(2,1fr);}
     .quant-grid{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:1fr;}
     section{padding:80px 0;}
@@ -298,13 +346,14 @@
   <nav class="wrap">
     <a href="#top" class="logo">
       <span class="logo-mark"><span>N</span></span>
-      <span class="logo-word">Northbridge <b>Capital</b></span>
+      <span class="logo-word">N <b>Capital</b></span>
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#quant">Algo Trading</a></li>
       <li><a href="#approach">Approach</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#team">Team</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cta">
@@ -320,9 +369,9 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Independent &amp; fee-only advisory · India &amp; US markets</p>
+        <p class="eyebrow">Independent &amp; fee-only management · India &amp; US markets</p>
         <h1>Growing your capital,<br>guarded just as <em>carefully</em>.</h1>
-        <p class="lede">Northbridge Capital Partners builds concentrated, tax-aware investment plans for individuals, families, and business owners — across Indian and US markets, with one advisor accountable for the whole picture.</p>
+        <p class="lede">N Capital Partners is a trading-first firm — we build your portfolio from the ground up, or, if you already have one, help secure it and leverage that capital to trade actively, across Indian and US markets.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">Book a consultation</a>
           <a href="#services" class="btn btn-ghost">See our services</a>
@@ -377,7 +426,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">What we do</p>
-        <h2>Three disciplines, one accountable plan.</h2>
+        <h2>Two disciplines, one accountable plan.</h2>
         <p>We don't hand you off between departments. The advisor you meet is the one managing your plan.</p>
       </div>
       <div class="services-grid reveal">
@@ -392,12 +441,6 @@
           <h3>Retirement Planning</h3>
           <p>Income modeling that answers the real question — can you retire when you want to, at the lifestyle you expect.</p>
           <a href="#" class="learn" data-modal="retirement">Learn more →</a>
-        </div>
-        <div class="service-card">
-          <svg class="service-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#B08D57" stroke-width="1.2"/><path d="M14 26V16h5a3 3 0 010 6h-5m0 0h6a3 3 0 010 6h-6" stroke="#12182B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>Tax &amp; Estate Strategy</h3>
-          <p>Coordinated planning with your CA and estate counsel so growth isn't quietly given back at filing time.</p>
-          <a href="#" class="learn" data-modal="tax">Learn more →</a>
         </div>
       </div>
     </div>
@@ -502,12 +545,55 @@
       <div class="about reveal">
         <p class="eyebrow">About the firm</p>
         <h2>A small team, five years in, building for the long run.</h2>
-        <p>Northbridge Capital Partners was founded on a simple frustration: most advisory relationships are transactional, product-driven, and short on follow-through. Five years on, we're still a small team by choice — six people, working closely across Indian and US markets — because it lets every plan get real attention.</p>
+        <p>N Capital Partners was founded on a simple frustration: most management relationships are transactional, product-driven, and short on follow-through. Five years on, we're still a small team by choice — six people, working closely across Indian and US markets — because it lets every plan get real attention.</p>
         <p>We're a small business with big ambitions. The plan has always been to grow — but only in a way that doesn't cost us the thing that got us here: knowing every client's plan by name, not by account number.</p>
         <p>We are fee-only and fiduciary by structure — meaning we're never paid a commission to recommend a product, and we're legally bound to act in your interest first.</p>
         <div class="about-sign">
-          <p class="name">Placeholder Name</p>
+          <p class="name">Seon</p>
           <p class="role">Founder &amp; Principal Advisor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Who's behind it</p>
+        <h2>Six people, five disciplines, one plan.</h2>
+        <p>Small enough that you'll know every name on this list — and what they're doing for your money.</p>
+      </div>
+      <div class="team-grid reveal">
+        <div class="team-card">
+          <div class="team-avatar">S</div>
+          <h3>Seon</h3>
+          <p class="team-role">Founder &amp; Principal Advisor</p>
+          <p class="team-blurb">Sets strategy and owns every client relationship end to end.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">Y</div>
+          <h3>Yogesh</h3>
+          <p class="team-role">Advisor</p>
+          <p class="team-blurb">Works alongside Seon on portfolio construction and client planning.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">A</div>
+          <h3>Aarya Naik</h3>
+          <p class="team-role">Developer</p>
+          <p class="team-blurb">Builds and maintains the trading infrastructure and execution systems.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">M</div>
+          <h3>Mayuresh Patil</h3>
+          <p class="team-role">Developer</p>
+          <p class="team-blurb">Builds and maintains the trading infrastructure and execution systems.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">S</div>
+          <h3>Sid</h3>
+          <p class="team-role">US Markets Researcher</p>
+          <p class="team-blurb">Tracks US market conditions and feeds research into strategy decisions.</p>
         </div>
       </div>
     </div>
@@ -528,25 +614,28 @@
         <p class="eyebrow">Get in touch</p>
         <h2>Start with a conversation, not a sales call.</h2>
         <p>Thirty minutes, no obligation. We'll tell you honestly whether we're a fit before anything else.</p>
-        <div class="info-row"><span class="k">Email</span><span>hello@northbridgecapital.example</span></div>
+        <div class="info-row"><span class="k">Email</span><span>aaryanaik123@gmail.com</span></div>
         <div class="info-row"><span class="k">Phone</span><span>+91 00000 00000</span></div>
-        <div class="info-row"><span class="k">Office</span><span>Placeholder Address, Mumbai, India</span></div>
+        <div class="info-row"><span class="k">Office</span><span>Vasai, Mumbai, India — beside Vartak College</span></div>
       </div>
-      <form id="contact-form">
+      <form id="contact-form" action="https://formsubmit.co/aaryanaik123@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New consultation request — N Capital">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
         <div class="field">
           <label for="name">Full name</label>
-          <input id="name" type="text" placeholder="Your name" required>
+          <input id="name" name="name" type="text" placeholder="Your name" required>
         </div>
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" type="email" placeholder="you@email.com" required>
+          <input id="email" name="email" type="email" placeholder="you@email.com" required>
         </div>
         <div class="field">
           <label for="message">What can we help with?</label>
-          <textarea id="message" placeholder="A brief note on your situation..."></textarea>
+          <textarea id="message" name="message" placeholder="A brief note on your situation..."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Send message</button>
-        <p class="form-note" id="form-status">Clicking send opens your email client with this pre-filled. For a real inbox form instead, connect Formspree or Getform — see the setup notes.</p>
+        <button type="submit" class="btn btn-primary" id="form-submit">Send message</button>
+        <p class="form-note" id="form-status">Sent straight to our inbox — no email app required.</p>
       </form>
     </div>
   </section>
@@ -558,7 +647,7 @@
     <div class="foot-top">
       <a href="#top" class="logo">
         <span class="logo-mark"><span>N</span></span>
-        <span class="logo-word">Northbridge <b>Capital</b></span>
+        <span class="logo-word">N <b>Capital</b></span>
       </a>
       <div class="foot-links">
         <div class="foot-col">
@@ -573,7 +662,7 @@
           <h4>Contact</h4>
           <ul>
             <li><a href="#contact">Book a consultation</a></li>
-            <li><a href="mailto:hello@northbridgecapital.example">hello@northbridgecapital.example</a></li>
+            <li><a href="mailto:aaryanaik123@gmail.com">aaryanaik123@gmail.com</a></li>
           </ul>
         </div>
         <div class="foot-col">
@@ -586,13 +675,32 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <p>Placeholder name and content — replace before publishing. Northbridge Capital Partners does not currently hold any regulatory registration; this template is not investment advice. Algorithmic and systematic trading strategies involve model risk, execution risk, and the possibility of loss, and past or backtested performance does not guarantee future results. Consult a licensed advisor and update all disclosures before this site represents a real, operating financial services business.</p>
-      <span class="foot-small">© 2026 Northbridge Capital</span>
+      <p>Placeholder name and content — replace before publishing. N Capital Partners does not currently hold any regulatory registration; this template is not investment advice. Algorithmic and systematic trading strategies involve model risk, execution risk, and the possibility of loss, and past or backtested performance does not guarantee future results. Consult a licensed advisor and update all disclosures before this site represents a real, operating financial services business.</p>
+      <span class="foot-small">© 2026 N Capital</span>
     </div>
   </div>
 </footer>
 
 <script>
+  // ---------- ROBUST ANCHOR SCROLL ----------
+  // Belt-and-suspenders on top of CSS scroll-margin-top, so every button
+  // that points at a section (Book a consultation, See our services, etc.)
+  // reliably lands in view below the fixed header, in any browser.
+  const headerHeight = 90;
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const targetId = link.getAttribute('href').slice(1);
+    if(!targetId || link.hasAttribute('data-modal')) return; // skip modal triggers and bare "#"
+    const targetEl = document.getElementById(targetId);
+    if(!targetEl) return;
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMenu();
+      const top = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      window.scrollTo({ top, behavior: 'smooth' });
+      history.pushState(null, '', '#' + targetId);
+    });
+  });
+
   // scroll reveal
   const els = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
@@ -630,12 +738,6 @@
       title: 'Retirement Planning',
       body: `<p>Income modeling that answers the real question: can you retire when you want to, at the lifestyle you expect?</p>
              <p>We model withdrawal sequencing, inflation, healthcare costs, and Social Security / pension timing where relevant, across both Indian and US accounts.</p>
-             <p><a href="#contact" class="btn btn-primary" style="margin-top:8px;" onclick="closeModal()">Book a consultation →</a></p>`
-    },
-    tax: {
-      title: 'Tax & Estate Strategy',
-      body: `<p>Coordinated planning with your CA and estate counsel, so growth isn't quietly given back at filing time.</p>
-             <p>Covers tax-loss harvesting, account location strategy, and estate documents like wills and nominations kept current as your plan grows.</p>
              <p><a href="#contact" class="btn btn-primary" style="margin-top:8px;" onclick="closeModal()">Book a consultation →</a></p>`
     },
     privacy: {
@@ -684,25 +786,43 @@
   });
 
   // ---------- CONTACT FORM ----------
-  // Static hosting (GitHub Pages) can't run a backend, so this opens a
-  // pre-filled email to your inbox. Swap this for a Formspree/Getform
-  // endpoint once you have one — see the README.
+  // Submits to FormSubmit.co (a free, no-signup form backend) which forwards
+  // straight to aaryanaik123@gmail.com. First submission ever sent to a new
+  // address triggers a one-time "Activate Form" confirmation email — click
+  // that once and every submission after arrives normally. No custom backend
+  // needed, which matters since GitHub Pages only serves static files.
   const form = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
+  const formSubmitBtn = document.getElementById('form-submit');
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const subject = encodeURIComponent('Consultation request from ' + (name || 'website visitor'));
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-    const mailto = `mailto:hello@northbridgecapital.example?subject=${subject}&body=${body}`;
+    formSubmitBtn.disabled = true;
+    formSubmitBtn.textContent = 'Sending…';
+    formStatus.style.color = 'var(--slate)';
+    formStatus.textContent = 'Sending your message…';
 
-    // visible confirmation on the page itself, since opening a mail app is invisible feedback
-    formStatus.textContent = 'Opening your email app now — if nothing happens, email us directly at hello@northbridgecapital.example.';
-    formStatus.classList.add('success');
+    const data = new FormData(form);
+    // FormSubmit's AJAX endpoint: same email, under /ajax/, returns JSON instead of redirecting
+    const ajaxAction = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
 
-    window.location.href = mailto;
+    fetch(ajaxAction, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(res => { if(!res.ok) throw new Error('bad response'); return res.json(); })
+    .then(() => {
+      formStatus.style.color = 'var(--brass)';
+      formStatus.textContent = 'Message sent — we\'ll get back to you shortly.';
+      form.reset();
+      formSubmitBtn.textContent = 'Send message';
+      formSubmitBtn.disabled = false;
+    })
+    .catch(() => {
+      // fall back to a plain, guaranteed-to-work form submission
+      formStatus.textContent = 'Submitting…';
+      form.submit();
+    });
   });
 </script>
 
